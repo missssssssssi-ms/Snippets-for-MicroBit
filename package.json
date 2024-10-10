@@ -1,25 +1,67 @@
 {
-  "name": "snippets_for_microbit-js",
-  "version": "1.0.0",
-  "description": "MicroBitのコード開発で使用できるスニペットです｡",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "microbit"
-  ],
-  "author": "missssssssssi-ms",
-  "license": "ISC",
-  "categories": [
-   "Snippets"
- ],
- "contributes": {
-    "snippets": [
-      {
-        "language": "javascript", 
-        "path": "./snippets/snippets.json"
-      }
-    ]
+	"name": "snippets-for-microbit",
+	"version": "1.2.0",
+	"description": "MicroBitのコード開発で使用できるスニペットです｡",
+	"main": "extension.js",
+	"browser": "extension.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"microbit"
+	],
+	"activationEvents": [
+		"onLanguage:javascript",
+		"onCommand:extension.copySelectedText",
+  "onCommand:extension.copyAndOpenMicrobit"
+	],
+	"engines": {
+		"vscode": "^1.60.0"
+	},
+	"author": "missssssssssi-ms",
+	"publisher": "missssssssssi-ms",
+	"license": "ISC",
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.copySelectedText",
+				"title": "選択されたテキストのコピー"
+			},
+   {
+    "command": "extension.copyAndOpenMicrobit",
+    "title": "コードの実行"
   }
+		],
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./snippets/snippets.json"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.copySelectedText",
+				"key": "F5",
+				"when": "editorTextFocus"
+			},
+   {
+    "command": "extension.copyAndOpenMicrobit",
+    "key": "shift+f5",
+    "when": "editorTextFocus"
+  }
+		]
+	},
+	"__metadata": {
+		"isApplicationScoped": false,
+		"installedTimestamp": 1728180873975,
+		"pinned": true,
+		"source": "vsix"
+	},
+ "repository": {
+		"type": "git",
+		"url": "https://github.com/missssssssssi-ms/Snippets-for-MicroBit"
+	}
 }

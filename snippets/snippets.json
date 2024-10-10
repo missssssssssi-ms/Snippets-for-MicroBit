@@ -4,7 +4,7 @@
  "body": [
      "basic.showNumber($1)"
  ],
-  "description": "画面上のに数字をスクロールさせます。数が 1 桁で、画面上に収まる場合、スクロールしません。"
+  "description": "画面上に数字をスクロールさせます。数が1桁で、画面上に収まる場合、スクロールしません。"
 },
 "画面に表示": {
  "prefix": "ShowLED",
@@ -18,6 +18,123 @@
      "`)"
  ],
  "description": "画面に表示カスタム画像を表示します｡\".\"で非表示､\"#\"で表示します｡5x5である必要があります｡"
+},
+"画面に文字を表示": {
+ "prefix": "ShowTxt",
+ "body": [
+     "basic.showString(\"$1\")"
+ ],
+  "description": "画面上に半角文字をスクロールさせます。1字の場合、画面上に収まる場合、スクロールしません。"
+},
+"LEDをすべて消灯": {
+ "prefix": "ShowNull",
+ "body": [
+     "basic.clearScreen()"
+ ],
+  "description": "画面を消去します｡"
+},
+"永久ループ": {
+ "prefix": "LoopForever",
+ "body": [
+     "basic.forever(function() {",
+     " $1",
+     "})"
+ ],
+ "description": "ループします｡永久に終わりません｡"
+},
+"待つ(秒)": {
+ "prefix": "WaitMS",
+ "body": [
+     "basic.pause(${1:100})"
+ ],
+  "description": "待機します｡初期値は100ms(0.1s)です｡ミリ秒で指定できます｡"
+},
+"ボタンが押されたとき": {
+ "prefix": "WhenBtnDown",
+ "body": [
+     "input.onButtonPressed(Button.${1|A,B|}, function() {",
+     " $2",
+     "})"
+ ],
+ "description": "ボタンA/Bが押されたときに処理を実行します｡"
+},
+"繰り返し(回数)": {
+ "prefix": "LoopCount",
+ "body": [
+     "for (let index = 0; index < ${1:5}; index++) {",
+     " $2",
+     "}"
+ ],
+ "description": "コードを繰り返します｡初期値は､5回です｡"
+},
+"IF分岐(1条件)": {
+ "prefix": "If1",
+ "body": [
+     "if ( $1 == \"$2\" ) {",
+     " $3",
+     "} else {",
+     " $4",
+     "}"
+ ],
+ "description": "1条件を満たしたときに､上のコード､満たさない場合は､下のコードを実行します｡ \"IF (!==)\"にすると､反転します｡"
+},
+"IF分岐(AND)": {
+ "prefix": "IfAnd",
+ "body": [
+     "if ( $1 == \"$2\" && $3 == \"$4\" ) {",
+     " $5",
+     "} else {",
+     " $6",
+     "}"
+ ],
+ "description": "2条件の全てを満たしたときに､上のコード､満たさない場合は､下のコードを実行します｡ \"IF (!==)\"にすると､反転します｡"
+},
+"IF分岐(OR)": {
+ "prefix": "IfOr",
+ "body": [
+  "if ( $1 == \"$2\" || $3 == \"$4\" ) {",
+  " $5",
+  "} else {",
+  " $6",
+  "}"
+ ],
+ "description": "2条件のいずれかを満たしたときに､上のコード､満たさない場合は､下のコードを実行します｡ \"IF (!==)\"にすると､反転します｡"
+},
+"ボタンが押された": {
+ "prefix": "BtnDown",
+ "body": [
+     "input.buttonIsPressed(Button.${1|A,B|})"
+ ],
+  "description": "ボタンA/Bが押されていることを示します｡IFなどで使います｡"
+},
+"繰り返し(条件成立まで)": {
+ "prefix": "LoopCondition",
+ "body": [
+     "while ( $1 == \"$2\" ) {",
+     " $3",
+     "}"
+ ],
+ "description": "条件が成立するまで､繰り返します｡AndやOrも使えます｡"
+},
+"シリアルポートに出力":{
+ "prefix": "SerialTxt",
+ "body": [
+  "serial.writeLine($1)"
+ ],
+ "description": "シリアルポートに変数(文字列)を出力します｡"
+},
+"変数に代入": {
+ "prefix": "Let=",
+ "body": [
+  "let ${1|num1,num2,num3,num4,num5|}=\"$2\";"
+],
+"description": "変数に代入します｡あとから再代入できます｡"
+},
+"デジタル出力": {
+ "prefix": "OutputDigital",
+ "body": [
+  "pins.digitalWritePin(DigitalPin.${1|P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15,P16|}, ${2|0,1|})"
+ ],
+ "description": "デジタル出力(P0~P16)します｡0で0V/1で3Vです｡"
 }
-
 }
